@@ -1,7 +1,8 @@
 
-### 0. **0X_00EXP: **
+### 0. **0X_00EXP: he MQ2 sensor continuously monitors the air for gas particles**
 
-
+**Descriptions:**
+This system is useful in applications where gas leakage detection is essential, such as in kitchens, laboratories, or industrial environments. The combination of visual (LED) and audible (buzzer) alerts ensures that the presence of harmful gases is immediately noticeable.
 
 **components:**
 - Arduino Nano: Microcontroller board.
@@ -107,15 +108,11 @@ ESP-NOW Protocol: Reliable for short-range communication without requiring a Wi-
 Make sure both ESP32 devices use the same Wi-Fi channel if needed.
 For the complete source code for both Sender and Receiver, refer to the sender.ino and receiver.ino files in this repository.
 
-### 4. **0X_04EXP: RFID-Based Access Control with Audio Feedback**  
+### 4. **0X_04EXP: **  
 **Description:**  
-Secure access system using **MFRC522 RFID** and audio alerts via DFPlayer Mini.  
 
 **Components:**  
-- Arduino Nano  
-- MFRC522 RFID Reader  
-- DFPlayer Mini (MP3)  
-- Solenoid Lock  
+-  
 
 **Files:**  
 - `EXP4.ino`: Main code.  
