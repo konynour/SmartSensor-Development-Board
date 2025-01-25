@@ -36,7 +36,27 @@ Adjust fan speed automatically (via DS18B20 sensor) or manually (via joystick).
 
 
 
-### 2 **0X_02EXP: **
+### 2 **0X_02EXP: home automation, wireless control of LEDs, and RGB lighting.**
+
+**Description:** 
+- This schematic represents an Arduino Nano-based control system with various components 
+- like buttons, LEDs, an RGB LED, 
+- and an HC-05 Bluetooth module.
+- Here's a detailed breakdown of each section:
+
+**Components:**
+- Microcontroller:Arduino_nano
+- Power(3.3V or 5V.)
+- Keys/Buttons
+- LEDs
+- Resistors (typically 220Ω or 330Ω).
+- Bluetooth Modul: (e.g., HC-05, HC-06)
+
+
+**Files:**  
+- `0X_02EXP.ino`: Main code.  
+- [Circuit Diagram](./images/photo.png)  
+- [Setup Photo](./images/photo.jpg)
 
 
 ### 3. **0X_03EXP ESP32 Communication Setup (Sender & Receiver)**
@@ -108,11 +128,24 @@ ESP-NOW Protocol: Reliable for short-range communication without requiring a Wi-
 Make sure both ESP32 devices use the same Wi-Fi channel if needed.
 For the complete source code for both Sender and Receiver, refer to the sender.ino and receiver.ino files in this repository.
 
-### 4. **0X_04EXP: **  
-**Description:**  
+### 4.0X_04EXP: 
+RFID-Based Access Control System:
+---------
+**Description**
+This project implements an RFID-based access control system integrated with the following components:
+
+LCD Display: Provides visual feedback to users.
+Audio Notifications: Enhances user interaction with pre-recorded sounds.
+LED Indicators: Show system status (standby, access granted/denied).
+
+  
 
 **Components:**  
--  
+- LCD: Display status (e.g., "Locked", "Unlocked").
+- RC522: Read RFID tags and match IDs.
+- DFPlayer: Play sounds based on actions.
+- Solenoid Lock: Control the locking mechanism.
+- LED Indicators: Show system state. 
 
 **Files:**  
 - `EXP4.ino`: Main code.  

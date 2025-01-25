@@ -110,4 +110,3 @@ void setRGBColor(int red, int green, int blue) {
   analogWrite(RGB_GREEN, green);
   analogWrite(RGB_BLUE, blue);
 }
-

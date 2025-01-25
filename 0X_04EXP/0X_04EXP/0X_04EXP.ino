@@ -1,85 +1,18 @@
+/*
+  Exp5: RFID Access System: Control System with RFID, Audio, and LCD
+  
+  This project implements an RFID-based access control system integrated with an LCD display,
+   audio notifications, and LEDs to indicate system status. 
+   Below is a detailed breakdown of its components,
+    working, and applications:
 
+
+*/
 
 
 #include <SPI.h>
 #include <MFRC522.h>
-#include <SoftwareSerial.h
-
-
-#include <esp_now.h>
-#include <WiFi.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-
-
-// OLED Display Configuration
-Adafruit_SSD1306 display(128, 64, &Wire, -1);
-
-
-// Data structure to receive
-typedef struct RxStruct {
-  int potVal; // Variable to store received potentiometer value
-} RxStruct;
-
-RxStruct receivedData;
-
-
-// Callback function when data is received
-void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len) {
-  memcpy(&receivedData, incomingData, sizeof(receivedData));
-}
-
-
-// Setup function
-void setup() {
-  Serial.begin(9600);
-
-  // Initialize OLED display
-  if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    Serial.println(F("SSD1306 allocation failed"));
-    for (;;); 
-  }
-  display.clearDisplay();
-
-  // Set ESP32 to Station mode
-  WiFi.mode(WIFI_STA);
-
-  // Initialize ESP-NOW
-  if (esp_now_init() != ESP_OK) {
-    Serial.println("Error initializing ESP-NOW");
-    return;
-  }
-
-  // Register the receive callback
-  esp_now_register_recv_cb(OnDataRecv);
-}
-
-
-// Main loop function
-void loop() {
-  // Clear the display and set text color
-  display.setTextColor(WHITE);
-  display.clearDisplay();
-
-  // Display the ESP-NOW title
-  display.setTextSize(2);
-  display.setCursor(20, 0);
-  display.print("ESP-NOW");
-
-  // Display the label for POT value
-  display.setCursor(10, 18);
-  display.print("POT Value");
-
-  // Display the received potentiometer value
-  display.setTextSize(3);
-  display.setCursor(25, 42);
-  display.print(receivedData.potVal);
-
-  // Update the display
-  display.display();
-}
-
+#include <SoftwareSerial.h>
 #include <DFRobotDFPlayerMini.h>
 #include <LiquidCrystal.h>
 

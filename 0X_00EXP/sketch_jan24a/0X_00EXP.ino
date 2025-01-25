@@ -8,7 +8,7 @@ const int gasThreshold = 300; // Adjust based on calibration
 
 void setup() {
   // Initialize serial communication
-  Serial.begin(115200);
+  Serial.begin(9600);
   
   // Set pin modes
   pinMode(MQ2_PIN, INPUT);
