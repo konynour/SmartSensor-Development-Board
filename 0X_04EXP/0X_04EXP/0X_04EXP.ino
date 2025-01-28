@@ -1,15 +1,3 @@
-/*
-  Exp5: RFID Access System: Control System with RFID, Audio, and LCD
-  
-  This project implements an RFID-based access control system integrated with an LCD display,
-   audio notifications, and LEDs to indicate system status. 
-   Below is a detailed breakdown of its components,
-    working, and applications:
-
-
-*/
-
-
 #include <SPI.h>
 #include <MFRC522.h>
 #include <SoftwareSerial.h>
@@ -17,8 +5,11 @@
 #include <LiquidCrystal.h>
 
 // Define LCD pins
-const int RS = 2, EN = 3, D4 = 4, D5 = 5, D6 = 6, D7 = 7;
-LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
+// const int RS = 7, EN = 2, D4 = 3, D5 = 4, D6 = 5, D7 = 6;
+// LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
+
+// Define LCD pins (RS, E, D4, D5, D6, D7)
+LiquidCrystal lcd(7, 2, 3, 4, 5, 6);
 
 // Define RFID pins
 #define RST_PIN 9

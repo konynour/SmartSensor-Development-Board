@@ -1,15 +1,28 @@
 #include <WiFi.h>
+#include <esp_wifi.h>
 
-void setup() {
-    // Initialize Serial Monitor
-    Serial.begin(115200);
-    Serial.println();
-
-    // Print ESP32 MAC Address
-    Serial.print("ESP32 MAC Address: ");
-    Serial.println(WiFi.macAddress());
+void readMacAddress(){
+  uint8_t baseMac[6];
+  esp_err_t ret = esp_wifi_get_mac(WIFI_IF_STA, baseMac);
+  if (ret == ESP_OK) {
+    Serial.printf("%02x:%02x:%02x:%02x:%02x:%02x\n",
+                  baseMac[0], baseMac[1], baseMac[2],
+                  baseMac[3], baseMac[4], baseMac[5]);
+  } else {
+    Serial.println("Failed to read MAC address");
+  }
 }
 
-void loop() {
-    // No loop logic needed
+void setup(){
+  Serial.begin(115200);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.STA.begin();
+
+  Serial.print("[DEFAULT] ESP32 Board MAC Address: ");
+  readMacAddress();
+}
+ 
+void loop(){
+
 }

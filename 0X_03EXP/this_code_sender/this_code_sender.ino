@@ -2,7 +2,7 @@
 #include <WiFi.h>
 
 
-uint8_t broadcastAddress[] = {0x08, 0x3a, 0xf2, 0xac, 0x75, 0x7c}; //--> REPLACE WITH THE MAC Address of your receiver / ESP32 Receiver.
+uint8_t broadcastAddress[] = {0x08, 0x3a, 0xf2, 0xb7, 0x23, 0x74}; //--> REPLACE WITH THE MAC Address of your receiver / ESP32 Receiver.
 
 int send_rnd_val_1;
 int send_rnd_val_2;
