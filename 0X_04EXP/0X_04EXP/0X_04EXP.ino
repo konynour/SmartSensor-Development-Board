@@ -12,7 +12,7 @@
 LiquidCrystal lcd(7, 2, 3, 4, 5, 6);
 
 // Define RFID pins
-#define RST_PIN 9
+#define RST_PIN A5
 #define SS_PIN 10
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 
@@ -21,16 +21,16 @@ SoftwareSerial mySoftwareSerial(8, 9); // RX, TX
 DFRobotDFPlayerMini myDFPlayer;
 
 // Define control pins
-const int solenoidPin = A0; // Solenoid control pin
-const int ledRed = A1;      // Red LED
-const int ledBlue = A2;     // Blue LED
+// const int solenoidPin = A0; // Solenoid control pin
+const int ledRed = A0;      // Red LED
+//const int ledBlue = A0;     // Blue LED
 
 // Allowed card UID (replace with your card's UID)
-byte allowedUID[] = {0xDE, 0xAD, 0xBE, 0xEF};
+byte allowedUID[] = {0xAD, 0x15, 0xF2, 0x21};
 
 void setup() {
   // Initialize serial communication
-  Serial.begin(9600);
+  Serial.begin(115200);
   
   // Initialize LCD
   lcd.begin(16, 2);
@@ -42,19 +42,18 @@ void setup() {
   
   // Initialize DFPlayer
   mySoftwareSerial.begin(9600);
-  if (!myDFPlayer.begin(mySoftwareSerial)) {
+ myDFPlayer.begin(mySoftwareSerial);
+ 
     lcd.clear();
-    lcd.print("DFPlayer Error!");
-    while(true);
-  }
+
   myDFPlayer.volume(30); // Set volume (0-30)
   
   // Initialize pins
-  pinMode(solenoidPin, OUTPUT);
+  // pinMode(solenoidPin, OUTPUT);
   pinMode(ledRed, OUTPUT);
-  pinMode(ledBlue, OUTPUT);
-  digitalWrite(solenoidPin, LOW);
-  digitalWrite(ledRed, HIGH); // Red LED in standby mode
+//  pinMode(ledBlue, OUTPUT);
+  // digitalWrite(solenoidPin, LOW);
+  digitalWrite(ledRed, LOW); // Red LED in standby mode
 }
 
 void loop() {
@@ -82,19 +81,19 @@ void loop() {
   // Execute actions based on card validity
   if (isAllowed) {
     lcd.clear();
-    lcd.print("Welcome!");
-    digitalWrite(ledBlue, HIGH);
-    digitalWrite(ledRed, LOW);
-    digitalWrite(solenoidPin, HIGH); // Unlock the solenoid
+    lcd.print("WelcomeDr ousama");
+//    digitalWrite(ledBlue, HIGH);
+    digitalWrite(ledRed, HIGH);
+    // digitalWrite(solenoidPin, HIGH); // Unlock the solenoid
     myDFPlayer.play(1); // Play audio file 1
     delay(3000); // Wait for 3 seconds
-    digitalWrite(solenoidPin, LOW); // Lock the solenoid
-    digitalWrite(ledBlue, LOW);
-    digitalWrite(ledRed, HIGH);
+    // digitalWrite(solenoidPin, LOW); // Lock the solenoid
+//    digitalWrite(ledBlue, LOW);
+    digitalWrite(ledRed, LOW);
   } else {
     lcd.clear();
     lcd.print("Access Denied!");
-    digitalWrite(ledRed, HIGH);
+    digitalWrite(ledRed, LOW);
     myDFPlayer.play(2); // Play audio file 2
     delay(2000);
   }
