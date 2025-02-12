@@ -42,6 +42,8 @@ void onDataRecv(const esp_now_recv_info_t *info, const uint8_t *incomingData, in
     display.print("Temp: "); display.print(receivedData.temperature); display.println(" C");
     display.print("Humidity: "); display.print(receivedData.humidity); display.println(" %");
     display.print("Motion: "); display.println(receivedData.motionDetected ? "Detected" : "No");
+    display.print("Dr Ousama El Nahas:");
+    display.print("Have a nice day ");
     display.display();
 
     // Control motor based on motion detection

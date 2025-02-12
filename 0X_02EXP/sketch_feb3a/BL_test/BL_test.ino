@@ -6,9 +6,17 @@ pinMode(12,OUTPUT);   //left motors reverse
 pinMode(11,OUTPUT);   //right  motors forward
 pinMode(10,OUTPUT);   //right motors reverse
 pinMode(9,OUTPUT);   //Led
+pinMode(13, OUTPUT);
+pinMode(5, INPUT_PULLUP); // Button 1
+pinMode(6, INPUT_PULLUP); // Button 2
+pinMode(7, INPUT_PULLUP); // Button 3
+
 Serial.begin(9600);
+
+
  
 }
+
  
 void loop() {
 if(Serial.available()){
@@ -17,14 +25,14 @@ if(Serial.available()){
 }
 
 
-if(digitalRead(7)){
+ if(digitalRead(5)){
   Serial.println("Key1 is pressed");
 }
-if(digitalRead(6)){
+ if(digitalRead(6)){
   Serial.println("Key2 is pressed");
 }
 
- if(digitalRead(5)){
+ if(digitalRead(7)){
   Serial.println("Key3 is pressed");
 }
  
